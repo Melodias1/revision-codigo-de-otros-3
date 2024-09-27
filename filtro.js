@@ -7,9 +7,11 @@ const productos = [
   {nombre: "Bota azul", tipo: "bota", color: "azul", img: "./bota-azul.jpg"},
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
-
-const li = document.getElementsByName("lista-de-productos")
-const $i = document.querySelector('.input');
+  //se cambian las variables para que sean mas descriptivas
+  // deberia ser un get element by id en lugar de get elements by name para obtener un unico elemento
+const li = document.getElementById("lista-de-productos")
+// se agrega clase input al input en el html, ya que no encontraba el elemento
+const classInput = document.querySelector('.input');
 
 for (let i = 0; i < productos.length; i++) {
   var d = document.createElement("div")
@@ -27,16 +29,17 @@ for (let i = 0; i < productos.length; i++) {
 
   li.appendChild(d)
 }
+// esta funcion de display no esta definida, por lo cual se borra
 
-displayProductos(productos)
-const botonDeFiltro = document.querySelector("button");
+// se agrega el id button en el html
+const botonDeFiltro = document.getElementById("button");
 
 botonDeFiltro.onclick = function() {
   while (li.firstChild) {
     li.removeChild(li.firstChild);
   }
-
-  const texto = $i.value;
+  // se agrga el to lower case al input del texto para asegurar que haya coincidencias
+  const texto = classInput.value.toLowerCase();
   console.log(texto);
   const productosFiltrados = filtrado(productos, texto );
 
